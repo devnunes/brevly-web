@@ -32,4 +32,14 @@
   --text-xs: 0.625rem; /* 10px */
   --text-xs--line-height: 0.875rem; /* 14px */
   --text-xs--font-weight: 400; /* regular */
+  --text-gray-400: var(--color-gray-400);
+}
+
+@layer base {
+  input::placeholder {
+    font-size: var(--text-md);
+    line-height: var(--text-md--line-height);
+    font-weight: var(--text-md--font-weight);
+    color: var(--color-gray-400);
+  }
 }
