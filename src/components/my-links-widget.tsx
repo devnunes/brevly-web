@@ -1,5 +1,12 @@
+import {
+  CopyIcon,
+  DownloadSimpleIcon,
+  LinkIcon,
+  TrashIcon,
+} from '@phosphor-icons/react'
 import { useEffect } from 'react'
 import { useLinksStore } from '../store/links'
+import { Button } from './ui/button'
 
 export function MyLinksWidget() {
   const links = useLinksStore(store => store.links)
@@ -9,13 +16,27 @@ export function MyLinksWidget() {
     loadLinks()
   }, [loadLinks])
   return (
-    <div className="flex flex-col rounded-lg w-91.5 lg:w-145  p-8 bg-gray-100 gap-6">
-      <span className="text-lg w-79">Meus links</span>
-      <div className="flex flex-col">
+    <div className="flex flex-col rounded-lg w-91.5 p-5.5 gap-6 md:gap-5 md:p-8 lg:w-145 bg-gray-100 ">
+      <div className="flex justify-between items-center">
+        <span className="text-lg">Meus links</span>
+        <Button size={'secondary'}>
+          <DownloadSimpleIcon className="text-gray-600" size={16} />
+          Baixar CSV
+        </Button>
+      </div>
+      <div className="flex flex-col items-center">
+        {links.length === 0 && (
+          <div className="flex flex-col w-full items-center border-t-2 border-gray-200 gap-3 pb-6 pt-4 md:pt-4 md:gap-4">
+            <LinkIcon className="text-gray-400 mt-4" size={32} />
+            <span className="text-gray-500 text-xs">
+              AINDA NÃO EXISTEM LINKS CADASTRADOS
+            </span>
+          </div>
+        )}
         {links.map(link => (
           <div
             key={link.id}
-            className="flex justify-between items-center border-t-1 border-gray-200 py-3 md:py-4"
+            className="flex w-full justify-between items-center border-t-1 border-gray-200 py-3 md:py-4"
           >
             <div className="flex flex-col w-79.5 md:w-87 lg:w-87">
               <a
@@ -26,10 +47,16 @@ export function MyLinksWidget() {
               </a>
               <span className="text-gray-500 text-sm">{link.url}</span>
             </div>
-            <div className="flex justify-center items-center gap-x-20">
-              <span>{link.accessCount}</span>
-              <span className="">copiar</span>
-              <span className=""> excluir</span>
+            <div className="flex justify-center items-center">
+              <span className="text-sm text-gray-500 mr-5">
+                {link.accessCount} acessos
+              </span>
+              <Button size={'tertiary'} className="mr-1">
+                <CopyIcon className="text-gray-600" size={16} />
+              </Button>
+              <Button size={'tertiary'}>
+                <TrashIcon className="text-gray-600" size={16} />
+              </Button>
             </div>
           </div>
         ))}

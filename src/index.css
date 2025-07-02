@@ -29,6 +29,7 @@
   --text-sm: 0.75rem; /* 12px */
   --text-sm--line-height: 1rem; /* 16px */
   --text-sm--font-weight: 600; /* semi-bold */
+  --text-s: 0.75rem; /* 12px */
   --text-xs: 0.625rem; /* 10px */
   --text-xs--line-height: 0.875rem; /* 14px */
   --text-xs--font-weight: 400; /* regular */

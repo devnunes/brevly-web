@@ -24,7 +24,7 @@ export function CreateLinkWidget() {
     <form
       onSubmit={handleSubmit(handleCreateLink)}
       action=""
-      className="flex flex-col rounded-lg w-95 h-85 p-8 bg-gray-100 gap-6"
+      className="flex flex-col rounded-lg w-91.5 md:w-95 h-85 p-8 bg-gray-100 gap-6"
     >
       <span className="text-lg w-79">Novo link</span>
       <div className="flex flex-col gap-2">
