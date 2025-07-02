@@ -5,12 +5,13 @@ import {
   TrashIcon,
 } from '@phosphor-icons/react'
 import { useEffect } from 'react'
-import { useLinksStore } from '../store/links'
+import { useLinksStore } from '@/store/links'
 import { Button } from './ui/button'
 
 export function MyLinksWidget() {
   const links = useLinksStore(store => store.links)
   const loadLinks = useLinksStore(store => store.loadLinks)
+  const removeLink = useLinksStore(store => store.removeLink)
 
   useEffect(() => {
     loadLinks()
@@ -55,14 +56,10 @@ export function MyLinksWidget() {
                   ? `${link.accessCount} acesso`
                   : `${link.accessCount} acessos`}
               </span>
-              <Button
-                size={'tertiary'}
-                className="mr-1"
-                onClick={() => console.log('Copy link')}
-              >
+              <Button size={'tertiary'} className="mr-1">
                 <CopyIcon className="text-gray-600" size={16} />
               </Button>
-              <Button size={'tertiary'}>
+              <Button onClick={() => removeLink(link.id)} size={'tertiary'}>
                 <TrashIcon className="text-gray-600" size={16} />
               </Button>
             </div>

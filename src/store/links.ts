@@ -2,9 +2,10 @@ import { create } from 'zustand'
 import { immer } from 'zustand/middleware/immer'
 import {
   type CreateLinkParams,
-  createLinkOnStorage,
-} from '@/http/create-link-on-storage'
-import { getLinksOnStorage } from '@/http/get-links-from-storage'
+  createLink,
+  deleteLink,
+  getLinks,
+} from '@/http/link-service'
 
 type Link = {
   id: string
@@ -17,13 +18,13 @@ type LinksState = {
   links: Link[]
   addLink: (link: CreateLinkParams) => void
   loadLinks: () => Promise<void>
-  // removeLink: (id: string) => void
+  removeLink: (id: string) => void
 }
 
 export const useLinksStore = create<LinksState>()(
   immer(set => {
     async function addLink(link: CreateLinkParams) {
-      const response = await createLinkOnStorage(link)
+      const response = await createLink(link)
 
       const newLink: Link = {
         id: response.id,
@@ -36,9 +37,19 @@ export const useLinksStore = create<LinksState>()(
       })
     }
     async function loadLinks() {
-      const links = await getLinksOnStorage()
+      const links = await getLinks()
       set(state => {
         state.links = links
+      })
+    }
+    async function removeLink(id: string) {
+      const response = await deleteLink(id)
+      if (response !== id) {
+        console.error('Failed to delete link:', response)
+        return
+      }
+      set(state => {
+        state.links = state.links.filter(link => link.id !== id)
       })
     }
 
@@ -46,6 +57,7 @@ export const useLinksStore = create<LinksState>()(
       links: [],
       addLink,
       loadLinks,
+      removeLink,
     }
   })
 )
