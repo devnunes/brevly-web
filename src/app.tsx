@@ -5,7 +5,7 @@ import { MyLinksWidget } from './components/my-links-widget'
 export function App() {
   return (
     <main className="h-dvh flex flex-col items-center p-10">
-      <div className="flex justify-center md:justify-start w-91.5 md:w-187 lg:w-245 mb-4">
+      <div className="flex justify-center mb-4 mt-10 w-91.5 md:w-187 lg:w-245 md:justify-start">
         <img
           src="./src/assets/brevly-logo.svg"
           alt="Brev.ly Logo"

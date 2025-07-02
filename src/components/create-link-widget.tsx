@@ -5,8 +5,8 @@ import type { CreateLinkParams } from '@/http/create-link-on-storage'
 import { useLinksStore } from '../store/links'
 
 const newLinkFormValidationSchema = z.object({
-  url: z.url(),
-  shortUrl: z.string(),
+  url: z.url().min(1, 'URL must be a valid URL'),
+  shortUrl: z.string().min(1, 'Short URL must be at least 1 character long'),
 })
 
 export function CreateLinkWidget() {
@@ -24,27 +24,27 @@ export function CreateLinkWidget() {
     <form
       onSubmit={handleSubmit(handleCreateLink)}
       action=""
-      className="flex flex-col rounded-lg w-91.5 md:w-95 h-85 p-8 bg-gray-100 gap-6"
+      className="flex flex-col rounded-lg w-80 sm:w-91.5 md:w-95 h-85 p-8 bg-gray-100 gap-6"
     >
       <span className="text-lg w-79">Novo link</span>
-      <div className="flex flex-col gap-2">
-        <label htmlFor="url" className="text-xs text-gray-500">
+      <div className="flex flex-col gap-2 text-gray-500 focus-within:text-blue-base">
+        <label htmlFor="url" className="text-xs">
           LINK ORIGINAL
         </label>
         <input
-          className="border border-gray-300 rounded-lg text-gray-400 px-4 py-2"
+          className="border border-gray-300 rounded-lg text-gray-400 px-4 py-2 focus:border-blue-base focus:outline-none"
           type="text"
           placeholder="https://www.exemplo.com.br"
           {...register('url', { required: true })}
         />
       </div>
 
-      <div className="flex flex-col gap-2">
-        <label htmlFor="shortUrl" className="text-xs text-gray-500">
+      <div className="flex flex-col gap-2 text-gray-500 focus-within:text-blue-base">
+        <label htmlFor="shortUrl" className="text-xs">
           LINK ENCURTADO
         </label>
         <input
-          className="border border-gray-300 rounded-lg text-gray-400 px-4 py-3"
+          className="border border-gray-300 rounded-lg text-gray-400 px-4 py-3 focus:border-blue-base focus:outline-none"
           type="text"
           placeholder="brev.ly/"
           {...register('shortUrl', { required: true })}

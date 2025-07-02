@@ -16,7 +16,7 @@ export function MyLinksWidget() {
     loadLinks()
   }, [loadLinks])
   return (
-    <div className="flex flex-col rounded-lg w-91.5 p-5.5 gap-6 md:gap-5 md:p-8 lg:w-145 bg-gray-100 ">
+    <div className="flex flex-col rounded-lg w-80 p-5.5 gap-6 sm:w-91.5 md:gap-5 md:p-8 lg:w-145 bg-gray-100 ">
       <div className="flex justify-between items-center">
         <span className="text-lg">Meus links</span>
         <Button size={'secondary'}>
@@ -38,7 +38,7 @@ export function MyLinksWidget() {
             key={link.id}
             className="flex w-full justify-between items-center border-t-1 border-gray-200 py-3 md:py-4"
           >
-            <div className="flex flex-col max-w-37 md:max-w-87">
+            <div className="flex flex-col max-w-37 lg:max-w-87">
               <a
                 className="text-blue-base text-md overflow-hidden text-ellipsis whitespace-nowrap"
                 href="http://localhost:3333/"
