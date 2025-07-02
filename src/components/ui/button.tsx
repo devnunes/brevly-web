@@ -9,7 +9,7 @@ const buttonVariants = tv({
       secondary:
         'w-25 text-gray-500 text-s rounded-sm p-2 bg-gray-200 hover:bg-gray-300 border-1 border-transparent hover:border-blue-base transition-colors',
       tertiary:
-        'text-gray-500 rounded-sm p-2 bg-gray-200 hover:bg-gray-300 border-1 border-transparent hover:border-blue-base transition-colors',
+        'text-gray-500 p-1.5 rounded-sm bg-gray-200 hover:bg-gray-300 border-1 border-transparent hover:border-blue-base transition-colors',
     },
   },
   defaultVariants: {

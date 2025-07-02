@@ -38,20 +38,28 @@ export function MyLinksWidget() {
             key={link.id}
             className="flex w-full justify-between items-center border-t-1 border-gray-200 py-3 md:py-4"
           >
-            <div className="flex flex-col w-79.5 md:w-87 lg:w-87">
+            <div className="flex flex-col max-w-37 md:max-w-87">
               <a
-                className="text-blue-base text-md"
+                className="text-blue-base text-md overflow-hidden text-ellipsis whitespace-nowrap"
                 href="http://localhost:3333/"
               >
                 brev.ly/{link.shortUrl}
               </a>
-              <span className="text-gray-500 text-sm">{link.url}</span>
+              <span className="text-gray-500 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
+                {link.url}
+              </span>
             </div>
             <div className="flex justify-center items-center">
               <span className="text-sm text-gray-500 mr-5">
-                {link.accessCount} acessos
+                {link.accessCount in [0, 1]
+                  ? `${link.accessCount} acesso`
+                  : `${link.accessCount} acessos`}
               </span>
-              <Button size={'tertiary'} className="mr-1">
+              <Button
+                size={'tertiary'}
+                className="mr-1"
+                onClick={() => console.log('Copy link')}
+              >
                 <CopyIcon className="text-gray-600" size={16} />
               </Button>
               <Button size={'tertiary'}>
