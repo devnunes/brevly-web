@@ -5,7 +5,7 @@ import {
   createLink,
   deleteLink,
   getLinks,
-} from '@/http/link-service'
+} from '@/services/link'
 
 type Link = {
   id: string
