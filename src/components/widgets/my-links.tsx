@@ -5,8 +5,8 @@ import {
   TrashIcon,
 } from '@phosphor-icons/react'
 import { useEffect } from 'react'
+import { Button } from '@/components/ui/button'
 import { useLinksStore } from '@/store/links'
-import { Button } from './ui/button'
 
 export function MyLinksWidget() {
   const links = useLinksStore(store => store.links)

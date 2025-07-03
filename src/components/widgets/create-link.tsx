@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod/v4'
 import type { CreateLinkParams } from '@/services/link'
-import { useLinksStore } from '../store/links'
+import { useLinksStore } from '../../store/links'
 
 const newLinkFormValidationSchema = z.object({
   url: z.url().min(1, 'URL must be a valid URL'),
