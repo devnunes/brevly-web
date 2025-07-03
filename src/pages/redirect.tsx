@@ -8,9 +8,6 @@ export default function RedirectPage() {
   const parsedShortUrl = z.string().min(1).safeParse(shortUrl)
 
   useEffect(() => {
-    // This effect runs when the component mounts
-    // You can add any side effects here if needed
-    // For example, you might want to log the shortUrl parameter
     console.log('shortUrl parameter:', parsedShortUrl)
     getLinkByShortUrl(parsedShortUrl).then(link => {
       if (link) {

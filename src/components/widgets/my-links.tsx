@@ -5,6 +5,7 @@ import {
   TrashIcon,
 } from '@phosphor-icons/react'
 import { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { useLinksStore } from '@/store/links'
 
@@ -40,12 +41,12 @@ export function MyLinksWidget() {
             className="flex w-full justify-between items-center border-t-1 border-gray-200 py-3 md:py-4"
           >
             <div className="flex flex-col max-w-37 lg:max-w-87">
-              <a
+              <Link
                 className="text-blue-base text-md overflow-hidden text-ellipsis whitespace-nowrap"
-                href="http://localhost:3333/"
+                to={`/${link.shortUrl}`}
               >
                 brev.ly/{link.shortUrl}
-              </a>
+              </Link>
               <span className="text-gray-500 text-sm overflow-hidden text-ellipsis whitespace-nowrap">
                 {link.url}
               </span>

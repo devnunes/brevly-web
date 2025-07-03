@@ -9,7 +9,7 @@ export interface CreateLinkParams {
 }
 
 export async function createLink({ url, shortUrl }: CreateLinkParams) {
-  const { data } = await axios.post(`${env.VITE_SERVER_URL}/links`, {
+  const { data } = await axios.post(`${env.VITE_API_URL}/links`, {
     url,
     shortUrl,
   })
@@ -29,21 +29,19 @@ export interface getLinkParams {
 }
 
 export async function getLinks(): Promise<getLinkParams[]> {
-  const { data } = await axios.get(`${env.VITE_SERVER_URL}/links`)
+  const { data } = await axios.get(`${env.VITE_API_URL}/links`)
   return data
 }
 
 export async function getLinkByShortUrl(
   shortUrl: ZodSafeParseResult<string>
 ): Promise<getLinkParams | null> {
-  const { data } = await axios.get(
-    `${env.VITE_SERVER_URL}/link/${shortUrl.data}`
-  )
+  const { data } = await axios.get(`${env.VITE_API_URL}/link/${shortUrl.data}`)
   return data
 }
 
 export async function deleteLink(id: string) {
-  await axios.delete(`${env.VITE_SERVER_URL}/link`, {
+  await axios.delete(`${env.VITE_API_URL}/link`, {
     data: { id },
   })
   return id
