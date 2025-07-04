@@ -33,7 +33,7 @@ export const useLinksStore = create<LinksState>()(
         accessCount: response.accessCount || 0,
       }
       set(state => {
-        state.links.push(newLink)
+        state.links = [newLink].concat(state.links)
       })
     }
     async function loadLinks() {
