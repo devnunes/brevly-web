@@ -32,7 +32,7 @@ export function CreateLinkWidget() {
           LINK ORIGINAL
         </label>
         <input
-          className="border border-gray-300 rounded-lg text-gray-400 px-4 py-2 focus:border-blue-base focus:outline-none"
+          className="border text-gray-600 border-gray-300 rounded-lg px-4 py-2 focus:border-blue-base focus:outline-none"
           type="text"
           placeholder="https://www.exemplo.com.br"
           {...register('url', { required: true })}
@@ -43,12 +43,15 @@ export function CreateLinkWidget() {
         <label htmlFor="shortUrl" className="text-xs">
           LINK ENCURTADO
         </label>
-        <input
-          className="border border-gray-300 rounded-lg text-gray-400 px-4 py-3 focus:border-blue-base focus:outline-none"
-          type="text"
-          placeholder="brev.ly/"
-          {...register('shortUrl', { required: true })}
-        />
+        <div className="border border-gray-300 rounded-lg px-4 py-2 focus-within:border-blue-base ">
+          <span className="text-md text-gray-400">brev.ly/</span>
+          <input
+            className="text-gray-600 focus:outline-none"
+            type="text"
+            placeholder=""
+            {...register('shortUrl', { required: true })}
+          />
+        </div>
       </div>
       <button
         className="bg-blue-base text-white rounded-lg w-full text-md py-3.5"
