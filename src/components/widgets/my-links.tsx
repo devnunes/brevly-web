@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
 import { useLinksStore } from '@/store/links'
 
+const env = import.meta.env
+
 export function MyLinksWidget() {
   const links = useLinksStore(store => store.links)
   const loadLinks = useLinksStore(store => store.loadLinks)
@@ -59,7 +61,15 @@ export function MyLinksWidget() {
                   : `${link.accessCount} acessos`}
               </span>
               <Button size={'tertiary'} className="mr-1">
-                <CopyIcon className="text-gray-600" size={16} />
+                <CopyIcon
+                  onClick={() =>
+                    navigator.clipboard.writeText(
+                      `${env.VITE_APP_URL}/${link.shortUrl}`
+                    )
+                  }
+                  className="text-gray-600"
+                  size={16}
+                />
               </Button>
               <Button onClick={() => removeLink(link.id)} size={'tertiary'}>
                 <TrashIcon className="text-gray-600" size={16} />
