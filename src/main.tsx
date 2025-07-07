@@ -8,7 +8,7 @@ if (!rootElement) {
   throw new Error("Root element with id 'root' not found")
 }
 
-const isDevelopment = import.meta.env.NODE_ENV === 'development'
+const isDevelopment = import.meta.env.VITE_NODE_ENV === 'development'
 
 createRoot(rootElement).render(
   isDevelopment ? (
