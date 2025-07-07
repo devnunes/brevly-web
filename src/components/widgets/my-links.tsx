@@ -17,6 +17,7 @@ export function MyLinksWidget() {
   useEffect(() => {
     loadLinks()
   }, [loadLinks])
+
   return (
     <div className="flex flex-col rounded-lg w-80 p-5.5 gap-6 sm:w-91.5 md:gap-5 md:p-8 lg:w-145 bg-gray-100 ">
       <div className="flex justify-between items-center">
