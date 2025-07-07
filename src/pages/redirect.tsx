@@ -6,12 +6,13 @@ import { getLinkByShortUrl } from '@/services/link'
 
 export default function RedirectPage() {
   const { shortUrl } = useParams<{ shortUrl: string }>()
-  const parsedShortUrl = z.string().min(1).safeParse(shortUrl)
   const [shortUrlHasRedirection, setshortUrlHasRedirection] =
     useState<boolean>(true)
   const [url, setUrl] = useState<string>('')
 
   useEffect(() => {
+    const parsedShortUrl = z.string().min(1).safeParse(shortUrl)
+
     const fetchUrl = async () => {
       await getLinkByShortUrl(parsedShortUrl)
         .then(({ url }) => {
@@ -25,7 +26,7 @@ export default function RedirectPage() {
         })
     }
     fetchUrl()
-  }, [parsedShortUrl])
+  }, [shortUrl])
 
   useEffect(() => {
     if (url !== '') {
