@@ -52,3 +52,9 @@ export async function deleteLink(id: string) {
   })
   return id
 }
+
+export async function exportLinksCSV() {
+  const { data } = await axios.post(`${env.VITE_API_URL}/links/export`)
+
+  return { reportUrl: data.reportUrl }
+}

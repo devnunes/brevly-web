@@ -7,6 +7,7 @@ import {
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/button'
+import { exportLinksCSV } from '@/services/link'
 import { useLinksStore } from '@/store/links'
 
 const env = import.meta.env
@@ -20,11 +21,21 @@ export function MyLinksWidget() {
     loadLinks()
   }, [loadLinks])
 
+  const exportLinks = async () => {
+    const { reportUrl } = await exportLinksCSV()
+    window.open(reportUrl, '_blank')
+  }
+
   return (
     <div className="flex flex-col rounded-lg w-80 p-5.5 gap-6 sm:w-91.5 md:gap-5 md:p-8 lg:w-145 bg-gray-100 ">
       <div className="flex justify-between items-center">
         <span className="text-lg">Meus links</span>
-        <Button size={'secondary'}>
+        <Button
+          size={'secondary'}
+          onClick={() => {
+            exportLinks()
+          }}
+        >
           <DownloadSimpleIcon className="text-gray-600" size={16} />
           Baixar CSV
         </Button>
