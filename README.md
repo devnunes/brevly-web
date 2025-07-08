@@ -1,17 +1,17 @@
 # Brev.ly Web
 
-## Sobre o Projeto
+## About the Project
 
-Este projeto é parte de um desafio da pós-graduação e será avaliado como parte da nota final. O objetivo é criar uma aplicação web de encurtamento de URLs, onde usuários podem criar, visualizar e gerenciar links encurtados de forma simples e intuitiva.
+This project is part of a post-graduation challenge and will be evaluated as part of the final grade. The goal is to create a web application for URL shortening, where users can create, view, and manage shortened links in a simple and intuitive way.
 
-## Funcionalidades
+## Features
 
-- Encurtar URLs personalizadas
-- Listar e gerenciar links criados
-- Interface responsiva e moderna
-- Validação de formulários com feedback ao usuário
+- Shorten custom URLs
+- List and manage created links
+- Responsive and modern interface
+- Form validation with user feedback
 
-## Tecnologias Utilizadas
+## Technologies Used
 
 - [React 19](https://react.dev/)
 - [Vite](https://vitejs.dev/)
@@ -22,35 +22,35 @@ Este projeto é parte de um desafio da pós-graduação e será avaliado como pa
 - [Zod](https://zod.dev/)
 - [Axios](https://axios-http.com/)
 
-## Como rodar o projeto
+## How to Run the Project
 
-1. **Clone o repositório:**
+1. **Clone the repository:**
    ```bash
-   git clone <url-do-repositorio>
+   git clone <repository-url>
    cd brevly-web
    ```
-2. **Instale as dependências:**
+2. **Install dependencies:**
    ```bash
    pnpm install
    ```
-3. **Inicie o servidor de desenvolvimento:**
+3. **Start the development server:**
    ```bash
    pnpm dev
    ```
-4. Acesse `http://localhost:5173` no navegador.
+4. Access `http://localhost:5173` in your browser.
 
-## Estrutura do Projeto
+## Project Structure
 
-- `src/` — Código-fonte principal
-  - `components/` — Componentes reutilizáveis
-  - `pages/` — Páginas da aplicação
-  - `services/` — Serviços de integração (ex: API)
-  - `store/` — Gerenciamento de estado
+- `src/` — Main source code
+  - `components/` — Reusable components
+  - `pages/` — Application pages
+  - `services/` — Integration services (e.g., API)
+  - `store/` — State management
 
-## Observações
+## Notes
 
-Este projeto foi desenvolvido como parte de um desafio acadêmico e pode ser expandido para incluir autenticação, analytics e outras funcionalidades.
+This project was developed as part of an academic challenge and can be expanded to include authentication, analytics, and other features.
 
 ---
 
-Desenvolvido por Matheus Nunes — Pós-graduação em Desenvolvimento Web
+Developed by Matheus Nunes — Post-graduation in Web Development
