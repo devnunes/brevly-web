@@ -1,5 +1,4 @@
 import axios from 'axios'
-import type { ZodSafeParseResult } from 'zod/v4'
 
 const env = import.meta.env
 
@@ -35,9 +34,9 @@ export async function getLinks(): Promise<getLinkParams[]> {
 }
 
 export async function getLinkByShortUrl(
-  shortUrl: ZodSafeParseResult<string>
+  shortUrl: string
 ): Promise<getLinkParams> {
-  const { data } = await axios.get(`${env.VITE_API_URL}/link/${shortUrl.data}`)
+  const { data } = await axios.get(`${env.VITE_API_URL}/link/${shortUrl}`)
   return {
     id: data.id,
     url: data.url,

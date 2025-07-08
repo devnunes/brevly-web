@@ -2,31 +2,30 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import z from 'zod/v4'
 import CentralWidget from '@/components/widgets/central'
-import { getLinkByShortUrl } from '@/services/link'
+import { useLinksStore } from '@/store/links'
 
 export default function RedirectPage() {
   const { shortUrl } = useParams<{ shortUrl: string }>()
+  const getLink = useLinksStore(store => store.getLink)
   const [shortUrlHasRedirection, setshortUrlHasRedirection] =
     useState<boolean>(true)
   const [url, setUrl] = useState<string>('')
 
   useEffect(() => {
-    const parsedShortUrl = z.string().min(1).safeParse(shortUrl)
-
-    const fetchUrl = async () => {
-      await getLinkByShortUrl(parsedShortUrl)
-        .then(({ url }) => {
-          if (!z.string().min(1).safeParse(url).success) {
-            return setshortUrlHasRedirection(false)
-          }
-          setUrl(url)
+    if (
+      z.string().min(1).safeParse(shortUrl).success &&
+      shortUrl !== undefined
+    ) {
+      getLink(shortUrl)
+        .then(data => {
+          setUrl(data.url)
         })
-        .catch(_error => {
+        .catch(err => {
+          console.error(err)
           setshortUrlHasRedirection(false)
         })
     }
-    fetchUrl()
-  }, [shortUrl])
+  }, [shortUrl, getLink])
 
   useEffect(() => {
     if (url !== '') {
